@@ -100,9 +100,9 @@ class CategoryController extends Controller
             DB::beginTransaction();
             $category->fill($request->only('name', 'description'));
             $category->save();
+            DB::commit();
             return redirect()->route('categories.index')
                 ->with('success', 'Category updated successfully.');
-            DB::commit();
         } catch (\Throwable $th) {
             DB::rollBack();
             Log::channel('web-issues')->error('Error while creating category', [

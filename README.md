@@ -2,14 +2,14 @@
 
 ## Overview
 
-The Admin Panel Data Management System (DMS) is a powerful and versatile tool for managing your Data efficiently. This system is designed with a focus on three main features: Access Control List (ACL), SMTP Mails, CSV export/import, and DataTables for data representation.
+The Admin Panel Data Management System (DMS) is a powerful and versatile tool for managing your Data efficiently. This system is designed with a focus on three main features: Access Control List (ACL), SMTP Mails, CSV export, and DataTables for data representation.
 
 ## Features
 
 -   **Access Control List (ACL)**: Securely manage user access and permissions to control who can view, edit, or delete specific data.
 -   **SMTP Mails**: Send email notifications and alerts directly from the system. Easily configure SMTP settings for email integration.
 
--   **CSV Import**: Quickly import data in CSV format for easy data migration and backups.
+-   **CSV Export**: Quickly export data in CSV format for easy data migration and backups.
 
 -   **DataTables**: Utilize DataTables for a responsive and interactive data representation. Sort, search, and paginate your data effortlessly.
 

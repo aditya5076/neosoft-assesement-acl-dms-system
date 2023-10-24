@@ -5,9 +5,10 @@ $(document).ready(function() {
         buttons: [
             {
               extend:'csv',
+              title:'users',
               exportOptions: {
                 columns: [ 0, 1 ]
-              }
+              },
             }
         ]
   });
@@ -17,6 +18,7 @@ $(document).ready(function() {
         buttons: [
             {
               extend:'csv',
+              title:'products',
               exportOptions: {
                 columns: [ 0, 1, 2, 3]
               }
@@ -29,6 +31,7 @@ $(document).ready(function() {
         buttons: [
             {
               extend:'csv',
+              title:'categories',
               exportOptions: {
                 columns: [ 0, 1 ]
               }

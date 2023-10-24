@@ -37,6 +37,7 @@
             <table class="table table-bordered" id="dataTable-products" width="100%" cellspacing="0">
                 <thead>
                     <tr>
+                        <th>Category Name</th>
                         <th>Name</th>
                         <th>Description</th>
                         <th>Price</th>
@@ -52,14 +53,14 @@
                         <td>{{ $product->description }} </td>
                         <td>{{ $product->price }} </td>
                         <td style="max-width: 70px;"><img src="{{ asset('product-images') }}/<?php echo $product->image;  ?>" alt="{{ $product->image }}" srcset="" style="width:100%"> </td>
-                        <td>
+                        <td style="display: flex;">
                             @can('product-edit')
                             <a href="{{ route('products.edit',['product'=>$product]) }}" class="btn btn-secondary">Edit</a>
                             @endcan
 
                             @can('product-delete')
                             <!-- Add delete button with a confirmation dialog -->
-                            <button type="submit" class="btn btn-danger" onclick="deleteProduct(<?php echo $product->id; ?>)">Delete</button>
+                            <button type="submit" class="btn btn-danger" style="margin-left: 5px;" onclick="deleteProduct(<?php echo $product->id; ?>)">Delete</button>
                             @endcan
                         </td>
 
@@ -74,7 +75,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                    <h5 class="modal-title" id="staticBackdropLabel">Category Detail</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

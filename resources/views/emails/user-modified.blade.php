@@ -3,7 +3,7 @@
 
 Hello {{ $firstName }},
 
-Your account has been modifies with the following details:
+Your account has been modified with the following details:
 
 First Name : {{ $firstName }} <br />
 Last Name : {{ $lastName }} <br />
