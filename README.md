@@ -1,8 +1,8 @@
-# Admin Panel Database Management System (DMS)
+# Admin Panel Data Management System (DMS)
 
 ## Overview
 
-The Admin Panel Database Management System (DMS) is a powerful and versatile tool for managing your database efficiently. This system is designed with a focus on three main features: Access Control List (ACL), SMTP Mails, CSV export/import, and DataTables for data representation.
+The Admin Panel Data Management System (DMS) is a powerful and versatile tool for managing your Data efficiently. This system is designed with a focus on three main features: Access Control List (ACL), SMTP Mails, CSV export/import, and DataTables for data representation.
 
 ## Features
 
@@ -20,8 +20,8 @@ To get started with this Admin Panel DMS, follow these steps:
 1. **Clone the repository**:
 
     ```shell
-    $ git clone https://github.com/your/repository.git
-    $ cd your-project-directory
+    $ git clone https://github.com/aditya5076/data-management-system.git
+    $ cd data-management-system
     $ composer install
     $ cp .env.example .env
     $ npm install
