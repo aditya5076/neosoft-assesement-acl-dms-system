@@ -9,8 +9,11 @@ $(document).ready(function() {
               exportOptions: {
                 columns: [ 0, 1 ]
               },
+              text: '<i class="far fa-file-excel"></i>',
+              titleAttr: 'Excel'
             }
-        ]
+        ],
+        ordering: false
   });
 
   $('#dataTable-products').DataTable({
@@ -21,9 +24,12 @@ $(document).ready(function() {
               title:'products',
               exportOptions: {
                 columns: [ 0, 1, 2, 3]
-              }
+              },
+              text: '<i class="far fa-file-excel"></i>',
+              titleAttr: 'Excel'
             }
-        ]
+        ],
+        ordering: false
   });
 
   $('#dataTable-categories').DataTable({
@@ -34,9 +40,14 @@ $(document).ready(function() {
               title:'categories',
               exportOptions: {
                 columns: [ 0, 1 ]
-              }
+              },  
+              text: '<i class="far fa-file-excel"></i>',
+              titleAttr: 'Excel',
+              
             }
-        ]
+        ],
+        ordering: false
   });
+
  $('.buttons-csv').addClass('btn btn-primary');
 });

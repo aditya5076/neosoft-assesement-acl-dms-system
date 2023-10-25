@@ -104,6 +104,10 @@
 </div>
 
 <script>
+    var table = $('#dataTable-products').DataTable();
+    table.search('');
+    table.columns().search('').draw();
+
     function deleteProduct(id) {
         var token = $('meta[name="csrf-token"]').attr('content');
         let isConfirmed = confirm('Are you sure you want to delete this Product ?');
