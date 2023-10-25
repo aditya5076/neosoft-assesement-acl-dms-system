@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SendModifiedEmailJob;
+use App\Jobs\SendWelcomeEmailJob;
 use App\Mail\UserModifiedMail;
 use App\Mail\WelcomeMail;
 use App\Models\User;
@@ -23,13 +25,23 @@ class UserController extends Controller
         $this->middleware('permission:user-delete', ['only' => ['destroy']]);
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
     public function index(Request $request)
     {
-        $users = User::orderBy('id', 'DESC')->paginate(5);
+        $users = User::orderBy('id', 'DESC')->get();
         return view('users.index', compact('users'));
     }
 
-
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
         $roles = Role::pluck('name', 'name')->all();
@@ -38,7 +50,12 @@ class UserController extends Controller
         return view('users.create', compact('roles'));
     }
 
-
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -59,7 +76,7 @@ class UserController extends Controller
 
             DB::commit();
 
-            Mail::to($user->email)->send(new WelcomeMail($user, $request->input('password')));
+            dispatch(new SendWelcomeEmailJob($user->email, $user, $request->input('password')));
 
             return redirect()->route('users.index')
                 ->with('message', "User created successfully & Login details been to user's email");
@@ -71,12 +88,24 @@ class UserController extends Controller
         }
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\User  $id
+     * @return \Illuminate\Http\Response
+     */
     public function show($id)
     {
         $user = User::find($id);
         return view('users.show', compact('user'));
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\User  $id
+     * @return \Illuminate\Http\Response
+     */
     public function edit($id)
     {
         $user = User::find($id);
@@ -85,6 +114,13 @@ class UserController extends Controller
         return view('users.edit', compact('user', 'roles', 'userRole'));
     }
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\User  $id
+     * @return \Illuminate\Http\Response
+     */
     public function update(Request $request, $id)
     {
         $this->validate($request, [
@@ -106,8 +142,7 @@ class UserController extends Controller
         $user->fill($input);
         $user->save();
 
-        Mail::to($user->email)->send(new UserModifiedMail($user));
-        // DB::table('model_has_roles')->where('model_id', $id)->delete();
+        dispatch(new SendModifiedEmailJob($user->email, $user));
 
         // $user->assignRole($request->input('roles'));
 
@@ -115,6 +150,12 @@ class UserController extends Controller
             ->with('message', 'User updated successfully');
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\User  $id
+     * @return \Illuminate\Http\Response
+     */
     public function destroy($id)
     {
         User::find($id)->delete();

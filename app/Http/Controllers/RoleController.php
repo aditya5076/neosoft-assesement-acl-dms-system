@@ -19,14 +19,13 @@ class RoleController extends Controller
 
     public function index(Request $request)
     {
-        $roles = Role::orderBy('id', 'DESC')->paginate(5);
+        $roles = Role::where('name', '!=', 'superadmin')->orderBy('id', 'DESC')->get();
         return view('roles.index', compact('roles'));
     }
 
     public function create()
     {
         $permission = Permission::get();
-        // dd($permission);
         return view('roles.create', compact('permission'));
     }
 
