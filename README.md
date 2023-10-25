@@ -13,6 +13,8 @@ The Admin Panel Data Management System (DMS) is a powerful and versatile tool fo
 
 -   **DataTables**: Utilize DataTables for a responsive and interactive data representation. Sort, search, and paginate your data effortlessly.
 
+-   **Queues for Welcome Emails**: Utilize Laravel queues to send welcome emails with login credentials asynchronously for improved performance.
+
 ## Installation
 
 To get started with this Admin Panel DMS, follow these steps:
@@ -30,6 +32,15 @@ To get started with this Admin Panel DMS, follow these steps:
     $ php artisan key:generate
     $ php artisan db:seed --class=PermissonsTableSeeder
     $ php artisan db:seed --class=AdminUserTableSeeder
+    $ php artisan db:seed --class=CategoryTableSeeder
+    $ php artisan db:seed --class=ProductTableSeeder
     $ php artisan serve
+
+    ```
+
+2. **To run the queue job**:
+
+    ```shell
+    $ php artisan queue:listen
 
     ```
