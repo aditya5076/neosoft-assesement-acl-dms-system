@@ -25,7 +25,8 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::latest()->get();
-        // dd($products);
+        // print_r('<pre>' . $products);
+        // exit;
         return view('products.index', compact('products'));
     }
 
