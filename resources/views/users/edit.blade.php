@@ -18,7 +18,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">List Of Properties</h6>
+            <h6 class="m-0 font-weight-bold text-primary">List Of Users</h6>
         </div>
         <div style="margin: 30px;">
             <form action="{{ route('users.update',['user'=>$user]) }}" id="userForm" method="POST">

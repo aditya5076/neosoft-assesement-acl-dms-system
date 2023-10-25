@@ -33,7 +33,10 @@ class UserController extends Controller
 
     public function index(Request $request)
     {
-        $users = User::orderBy('id', 'DESC')->get();
+
+        $users = User::all()->filter(function ($q) {
+            if (!$q->hasRole('superadmin')) return true;
+        })->values();
         return view('users.index', compact('users'));
     }
 
